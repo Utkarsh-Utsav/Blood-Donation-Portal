@@ -1,0 +1,49 @@
+{% extends 'blood_donation/base.html' %}
+
+{% block content %}
+		<h2><i>Donors for blood </i></h2>
+		
+	        <form class="navbar-form navbar-right action="{% url 'home' %}" method="get">
+				{% csrf_token %}
+				<select name="group" style="background-color:rgb(56,156,256); color:rgb(89,0,0);">
+			        <option value="O+">O+</option>
+			   	    <option value="A+">A+</option>
+			    	<option value="B+">B+</option>
+			    	<option value="AB+">AB+</option>
+			    	<option value="AB-">AB-</option>
+			   	    <option value="A-">A-</option>
+			    	<option value="B-">B-</option>
+			    	<option value="O-">O-</option>
+		  		</select>
+        		<input type="submit" value="Search Blood Group" style="background-color:rgb(56,156,256); color:rgb(256,256,256); font-style: italic;">
+        		
+
+			</form>
+<a  href="{% url 'donate' %}"><button  style="background-color:rgb(56,156,256); color:rgb(256,256,256); font-style: italic;">Donate Blood </button></a>
+		
+		<table class="table table-striped table-condensed">
+			<thead>
+				<tr class="info">
+					<th>Serial No.</th>
+					<th>Blood Group</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Contact</th>
+					<th>Post Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for p in person %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{p.blood_group}}</td>
+						<td>{{p.name}}</td>
+						<td>{{p.address}}</td>
+						<td>{{p.contact}}</td>
+						<td>{{p.post_date}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+			
+{% endblock %}

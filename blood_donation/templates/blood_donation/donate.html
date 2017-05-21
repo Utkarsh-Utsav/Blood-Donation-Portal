@@ -1,0 +1,43 @@
+{% extends 'blood_donation/base.html' %}
+
+{% block content %}
+<!--<div>
+  <form method="POST" class="post-form">{% csrf_token %}
+    <label for="group">Blood Group</label>
+    <select name="group" id="group" style="background-color:rgb(56,156,256); color:rgb(89,0,0);">
+			        <option value="O+">O+</option>
+			   	    <option value="A+">A+</option>
+			    	<option value="B+">B+</option>
+			    	<option value="AB+">AB+</option>
+			    	<option value="AB-">AB-</option>
+			   	    <option value="A-">A-</option>
+			    	<option value="B-">B-</option>
+			    	<option value="O-">O-</option>
+		  		</select>
+
+	<label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name..">
+    <label for="contact">Contact</label>
+    <input type="number" id="contact" name="contact"  length="10" placeholder="Your contact no..">
+    <label for="address">address</label>
+    <input type="text" id="address" name="address" placeholder="Your address ">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+-->
+
+	<h3 style="text-align: center">Blood Donation </h3>
+		<form method="POST" class="post-form">{% csrf_token %}
+			<div class="form-group">
+				{{ form.as_p }}
+				<button type="submit" class="save btn btn-default">Submit</button>	
+			</div>
+		</form>
+		{% if messages %}
+					<ul class="messages">
+					    {% for message in messages %}
+					    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+					    {% endfor %}
+					</ul>
+				{% endif %}	
+{%endblock %}

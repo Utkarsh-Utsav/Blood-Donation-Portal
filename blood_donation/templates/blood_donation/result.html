@@ -1,0 +1,7 @@
+{% extends 'blood_donation/base.html' %}
+
+{% block content}
+{% for q in query %}
+	<p>{{q.name}}<p>
+{% endfor %}
+{% endblock %}
